@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: frontend
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/TU-USUARIO/tu-repo-gitops.git
+    targetRevision: HEAD
+    path: apps/frontend/overlays/dev
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: microservices-app
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
