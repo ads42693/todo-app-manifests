@@ -1,10 +1,13 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+
 resources:
 - ../../base
-namespace: microservices-app
+
 patchesStrategicMerge:
 - config-patch.yaml
+
 images:
 - name: ${YOUR_REGISTRY}/backend-node
+  newName: ${YOUR_REGISTRY}/backend-node
   newTag: latest

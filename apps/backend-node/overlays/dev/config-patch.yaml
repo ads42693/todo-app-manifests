@@ -12,3 +12,5 @@ spec:
           value: "development"
         - name: LOG_LEVEL
           value: "debug"
+        - name: ENABLE_SWAGGER
+          value: "true"
