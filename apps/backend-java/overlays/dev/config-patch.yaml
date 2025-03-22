@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-java
+spec:
+  template:
+    spec:
+      containers:
+      - name: backend-java
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: "development"
+        - name: LOGGING_LEVEL_ROOT
+          value: "DEBUG"
+        - name: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+          value: "*"
+        - name: JAVA_OPTS
+          value: "-Xms128m -Xmx256m -XX:+UseG1GC -Dspring.devtools.restart.enabled=true"
